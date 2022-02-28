@@ -1,0 +1,15 @@
+name: BambooFighters
+version: '${version}'
+main: io.github.agus5534.bamboofighters.BambooFighters
+api-version: 1.18
+prefix: BF
+load: POSTWORLD
+authors: [ Agus5534 ]
+description: Plugin para BambooFighters
+commands:
+  kit:
+    description: Obten un Kit
+    usage: /<command> [Kit_Name]
+  startselection:
+    description: Inicia la ronda de selección
+    usage: /<command>

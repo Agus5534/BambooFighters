@@ -1,0 +1,79 @@
+package io.github.agus5534.bamboofighters;
+
+import io.github.agus5534.bamboofighters.commands.Kit;
+import io.github.agus5534.bamboofighters.commands.StartSelection;
+import io.github.agus5534.bamboofighters.commands.tabcompleters.KitTab;
+import io.github.agus5534.bamboofighters.events.block.BlockBreak;
+import io.github.agus5534.bamboofighters.events.block.BlockPlace;
+import io.github.agus5534.bamboofighters.events.inventory.InventoryClick;
+import io.github.agus5534.bamboofighters.events.inventory.InventoryClose;
+import io.github.agus5534.bamboofighters.events.player.PlayerDeath;
+import io.github.agus5534.bamboofighters.events.player.PlayerDropItem;
+import io.github.agus5534.bamboofighters.events.player.PlayerInteract;
+import io.github.agus5534.bamboofighters.events.player.PlayerTakeLecternBook;
+import io.github.agus5534.bamboofighters.utils.selections.Tier;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+
+public final class BambooFighters extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+        // Plugin startup logic
+        this.getCommand("kit").setExecutor(new Kit());
+        this.getCommand("kit").setTabCompleter(new KitTab());
+        this.getCommand("startselection").setExecutor(new StartSelection());
+        PluginManager pm = Bukkit.getServer().getPluginManager();
+        pm.registerEvents(new BlockBreak(),this);
+        pm.registerEvents(new BlockPlace(),this);
+        pm.registerEvents(new PlayerDeath(),this);
+        pm.registerEvents(new PlayerDropItem(),this);
+        pm.registerEvents(new PlayerInteract(),this);
+        pm.registerEvents(new PlayerTakeLecternBook(),this);
+        pm.registerEvents(new InventoryClick(),this);
+        pm.registerEvents(new InventoryClose(),this);
+        createScores();
+    }
+
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+    }
+
+    private void createScores() {
+        registerObjective("selected"); //Si jugador fue seleccionado
+        registerObjective("selection"); //Tier de la selección. 0 = No es momento / Ya pasó
+        registerObjective("captain"); //Si es capitan
+        registerObjective("selectedt1"); //Si ya eligió en el tier 1
+        registerObjective("selectedt2"); //Si ya eligió en el tier 2
+        registerObjective("selectedt3"); //Si ya eligió en el tier 3
+        registerObjective("selectedt4"); //Si ya eligió en el tier 4
+        registerObjective("selectiontimes"); //Cantidad de capitanes que eligieron. Se reinicia al iniciar la siguiente etapa.
+        registerObjective("selectTime"); //Si es su momento de sekeccionar
+    }
+
+    public static Tier getTier() {
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        Objective selection = scoreboard.getObjective("selection");
+        if(selection.getScore("values").getScore() == 1) {
+            return Tier.TIER1;
+        } else if(selection.getScore("values").getScore() == 2){
+            return Tier.TIER2;
+        }  else if(selection.getScore("values").getScore() == 3) {
+            return Tier.TIER3;
+        }  else if(selection.getScore("values").getScore() == 4) {
+            return Tier.TIER4;
+        } else {
+            return null;
+        }
+    }
+    private void registerObjective(String objectiveName) {
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        if(scoreboard.getObjective(objectiveName) == null) {
+            scoreboard.registerNewObjective(objectiveName,"dummy");
+        }
+    }
+}
