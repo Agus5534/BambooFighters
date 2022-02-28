@@ -58,7 +58,7 @@ public final class BambooFighters extends JavaPlugin {
     public static Tier getTier() {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
         Objective selection = scoreboard.getObjective("selection");
-        if(selection.getScore("values").getScore() == 1) {
+        if(selection.getScore("values").getScore() <= 1) {
             return Tier.TIER1;
         } else if(selection.getScore("values").getScore() == 2){
             return Tier.TIER2;
