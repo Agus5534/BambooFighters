@@ -14,13 +14,15 @@ import static io.github.agus5534.bamboofighters.BambooFighters.getTier;
 public class StartSelection implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender.isOp()) {
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        Objective selended = scoreboard.getObjective("selectionEnded");
+        if(sender.isOp() && selended.getScore("values").getScore() == 0) {
             new Manager(getTier()).createSelection();
         }
 
         return true;
     }
-    public static Tier getTier() {
+    private Tier getTier() {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
         Objective selection = scoreboard.getObjective("selection");
         if(selection.getScore("values").getScore() == 0) {

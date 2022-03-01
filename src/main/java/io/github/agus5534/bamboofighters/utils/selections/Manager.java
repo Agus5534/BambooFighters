@@ -32,6 +32,7 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(2);
+                new Manager(Tier.TIER2).createSelection();
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
@@ -73,6 +74,7 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(3);
+                new Manager(Tier.TIER3).createSelection();
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
@@ -114,6 +116,9 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(4);
+                Objective selended = scoreboard.getObjective("selectionEnded");
+                selended.getScore("values").setScore(1);
+                new Manager(Tier.TIER4).createSelection();
             } else {
                 switch (getSelectionTimes()) {
                     case 0:

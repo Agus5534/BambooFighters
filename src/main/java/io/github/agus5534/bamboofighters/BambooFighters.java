@@ -45,14 +45,15 @@ public final class BambooFighters extends JavaPlugin {
 
     private void createScores() {
         registerObjective("selected"); //Si jugador fue seleccionado
-        registerObjective("selection"); //Tier de la selección. 0 = No es momento / Ya pasó
+        registerObjective("selection"); //Tier de la selección.
         registerObjective("captain"); //Si es capitan
         registerObjective("selectedt1"); //Si ya eligió en el tier 1
         registerObjective("selectedt2"); //Si ya eligió en el tier 2
         registerObjective("selectedt3"); //Si ya eligió en el tier 3
         registerObjective("selectedt4"); //Si ya eligió en el tier 4
         registerObjective("selectiontimes"); //Cantidad de capitanes que eligieron. Se reinicia al iniciar la siguiente etapa.
-        registerObjective("selectTime"); //Si es su momento de sekeccionar
+        registerObjective("selectTime"); //Si es su momento de seleccionar
+        registerObjective("selectionEnded"); //Si termino la selección. 1 = terminó
     }
 
     public static Tier getTier() {
