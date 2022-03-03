@@ -5,11 +5,12 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class BlockPlace implements Listener {
 @EventHandler
     public void onPlace(BlockPlaceEvent event) {
-    if(event.getBlock().getType() != Material.WHITE_WOOL && event.getPlayer().getGameMode() == GameMode.SURVIVAL) {
+    if(!event.getItemInHand().isSimilar(new ItemStack(Material.WHITE_WOOL))) {
         event.setCancelled(true);
     }
 
