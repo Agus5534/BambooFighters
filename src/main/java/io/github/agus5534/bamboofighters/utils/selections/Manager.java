@@ -12,6 +12,9 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Manager {
     public Tier tier;
@@ -21,8 +24,21 @@ public class Manager {
     public void createSelection() {
         createGUI();
     }
+    List<String> capitanes = new ArrayList<>();
+
+    private String getCapitanes(int index) throws IndexOutOfBoundsException{
+        capitanes.clear();
+        capitanes.add("Janethy");
+        capitanes.add("shiru_suki");
+        capitanes.add("TaTuRC");
+        capitanes.add("ConnG106");
+        capitanes.add("AugusImperial");
+        capitanes.add("Lucmus");
+        capitanes.add("Ivoo_17");
 
 
+        return capitanes.get(index);
+    }
     private void createGUI() {
         if(tier == Tier.TIER1){
             if(getSelectionTimes() == 7) {
@@ -32,35 +48,34 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(2);
-                new Manager(Tier.TIER2).createSelection();
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player jane = Bukkit.getPlayer("Janethy");
+                        Player jane = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(jane);
                         break;
                     case 1:
-                        Player Infer = Bukkit.getPlayer("Infernal_Guy");
+                        Player Infer = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(Infer);
                         break;
                     case 2:
-                        Player mage = Bukkit.getPlayer("TaTuRC");
+                        Player mage = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(mage);
                         break;
                     case 3:
-                        Player conn = Bukkit.getPlayer("ConnG106");
+                        Player conn = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(conn);
                         break;
                     case 4:
-                        Player augus = Bukkit.getPlayer("AugusImperial");
+                        Player augus = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(augus);
                         break;
                     case 5:
-                        Player lucmus = Bukkit.getPlayer("Lucmus");
+                        Player lucmus = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(lucmus);
                         break;
                     case 6:
-                        Player ivo = Bukkit.getPlayer("Ivoo_17");
+                        Player ivo = Bukkit.getPlayer(getCapitanes(7));
                         SelectionGUI(ivo);
                         break;
 
@@ -74,35 +89,34 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(3);
-                new Manager(Tier.TIER3).createSelection();
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player p1 = Bukkit.getPlayer("Lucmus");
+                        Player p1 = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(p1);
                         break;
                     case 1:
-                        Player p2 = Bukkit.getPlayer("TaTuRC");
+                        Player p2 = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(p2);
                         break;
                     case 2:
-                        Player p3 = Bukkit.getPlayer("ConnG106");
+                        Player p3 = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(p3);
                         break;
                     case 3:
-                        Player p4 = Bukkit.getPlayer("Janethy");
+                        Player p4 = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(p4);
                         break;
                     case 4:
-                        Player p5 = Bukkit.getPlayer("AugusImperial");
+                        Player p5 = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(p5);
                         break;
                     case 5:
-                        Player p6 = Bukkit.getPlayer("Ivoo_17");
+                        Player p6 = Bukkit.getPlayer(getCapitanes(7));
                         SelectionGUI(p6);
                         break;
                     case 6:
-                        Player p7 = Bukkit.getPlayer("Infernal_Guy");
+                        Player p7 = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(p7);
                         break;
 
@@ -118,35 +132,34 @@ public class Manager {
                 selection.getScore("values").setScore(4);
                 Objective selended = scoreboard.getObjective("selectionEnded");
                 selended.getScore("values").setScore(1);
-                new Manager(Tier.TIER4).createSelection();
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player p1 = Bukkit.getPlayer("Janethy");
+                        Player p1 = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(p1);
                         break;
                     case 1:
-                        Player p2 = Bukkit.getPlayer("TaTuRC");
+                        Player p2 = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(p2);
                         break;
                     case 2:
-                        Player p3 = Bukkit.getPlayer("AugusImperial");
+                        Player p3 = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(p3);
                         break;
                     case 3:
-                        Player p4 = Bukkit.getPlayer("Ivoo_17");
+                        Player p4 = Bukkit.getPlayer(getCapitanes(7));
                         SelectionGUI(p4);
                         break;
                     case 4:
-                        Player p5 = Bukkit.getPlayer("Lucmus");
+                        Player p5 = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(p5);
                         break;
                     case 5:
-                        Player p6 = Bukkit.getPlayer("Infernal_Guy");
+                        Player p6 = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(p6);
                         break;
                     case 6:
-                        Player p7 = Bukkit.getPlayer("ConnG106");
+                        Player p7 = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(p7);
                         break;
 
@@ -163,31 +176,31 @@ public class Manager {
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player p1 = Bukkit.getPlayer("Ivoo_17");
+                        Player p1 = Bukkit.getPlayer(getCapitanes(7));
                         SelectionGUI(p1);
                         break;
                     case 1:
-                        Player p2 = Bukkit.getPlayer("AugusImperial");
+                        Player p2 = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(p2);
                         break;
                     case 2:
-                        Player p3 = Bukkit.getPlayer("Infernal_Guy");
+                        Player p3 = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(p3);
                         break;
                     case 3:
-                        Player p4 = Bukkit.getPlayer("ConnG106");
+                        Player p4 = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(p4);
                         break;
                     case 4:
-                        Player p5 = Bukkit.getPlayer("Lucmus");
+                        Player p5 = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(p5);
                         break;
                     case 5:
-                        Player p6 = Bukkit.getPlayer("Janethy");
+                        Player p6 = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(p6);
                         break;
                     case 6:
-                        Player p7 = Bukkit.getPlayer("TaTuRC");
+                        Player p7 = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(p7);
                         break;
 
@@ -203,6 +216,42 @@ public class Manager {
             for(Player p : Bukkit.getOnlinePlayers()) {
                 if(p.getScoreboard().getPlayerTeam(p) != null) {
                     if(p.getScoreboard().getPlayerTeam(p).getName().equals("tier1")) {
+                        addPlayerHead(p.getName(),inv,i);
+                        i++;
+                    }
+                }
+            }
+            player.openInventory(inv);
+        } else if(tier == Tier.TIER2) {
+            int i = 0;
+            Inventory inv = Bukkit.createInventory(null, 9, ChatColor.RED + "Seleccion de equipos");
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                if(p.getScoreboard().getPlayerTeam(p) != null) {
+                    if(p.getScoreboard().getPlayerTeam(p).getName().equals("tier2")) {
+                        addPlayerHead(p.getName(),inv,i);
+                        i++;
+                    }
+                }
+            }
+            player.openInventory(inv);
+        } else if(tier == Tier.TIER3) {
+            int i = 0;
+            Inventory inv = Bukkit.createInventory(null, 9, ChatColor.RED + "Seleccion de equipos");
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                if(p.getScoreboard().getPlayerTeam(p) != null) {
+                    if(p.getScoreboard().getPlayerTeam(p).getName().equals("tier3")) {
+                        addPlayerHead(p.getName(),inv,i);
+                        i++;
+                    }
+                }
+            }
+            player.openInventory(inv);
+        } else if(tier == Tier.TIER4){
+            int i = 0;
+            Inventory inv = Bukkit.createInventory(null, 9, ChatColor.RED + "Seleccion de equipos");
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                if(p.getScoreboard().getPlayerTeam(p) != null) {
+                    if(p.getScoreboard().getPlayerTeam(p).getName().equals("tier4")) {
                         addPlayerHead(p.getName(),inv,i);
                         i++;
                     }
