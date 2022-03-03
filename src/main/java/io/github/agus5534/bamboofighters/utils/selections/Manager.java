@@ -28,7 +28,7 @@ public class Manager {
 
     private String getCapitanes(int index) throws IndexOutOfBoundsException{
         capitanes.clear();
-        capitanes.add("Janethy");
+        capitanes.add("Janethy");;
         capitanes.add("shiru_suki");
         capitanes.add("TaTuRC");
         capitanes.add("ConnG106");
@@ -51,31 +51,31 @@ public class Manager {
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player jane = Bukkit.getPlayer(getCapitanes(1));
+                        Player jane = Bukkit.getPlayer(getCapitanes(0));
                         SelectionGUI(jane);
                         break;
                     case 1:
-                        Player Infer = Bukkit.getPlayer(getCapitanes(2));
+                        Player Infer = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(Infer);
                         break;
                     case 2:
-                        Player mage = Bukkit.getPlayer(getCapitanes(3));
+                        Player mage = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(mage);
                         break;
                     case 3:
-                        Player conn = Bukkit.getPlayer(getCapitanes(4));
+                        Player conn = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(conn);
                         break;
                     case 4:
-                        Player augus = Bukkit.getPlayer(getCapitanes(5));
+                        Player augus = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(augus);
                         break;
                     case 5:
-                        Player lucmus = Bukkit.getPlayer(getCapitanes(6));
+                        Player lucmus = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(lucmus);
                         break;
                     case 6:
-                        Player ivo = Bukkit.getPlayer(getCapitanes(7));
+                        Player ivo = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(ivo);
                         break;
 
@@ -92,31 +92,31 @@ public class Manager {
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player p1 = Bukkit.getPlayer(getCapitanes(6));
+                        Player p1 = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(p1);
                         break;
                     case 1:
-                        Player p2 = Bukkit.getPlayer(getCapitanes(3));
+                        Player p2 = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(p2);
                         break;
                     case 2:
-                        Player p3 = Bukkit.getPlayer(getCapitanes(4));
+                        Player p3 = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(p3);
                         break;
                     case 3:
-                        Player p4 = Bukkit.getPlayer(getCapitanes(1));
+                        Player p4 = Bukkit.getPlayer(getCapitanes(0));
                         SelectionGUI(p4);
                         break;
                     case 4:
-                        Player p5 = Bukkit.getPlayer(getCapitanes(5));
+                        Player p5 = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(p5);
                         break;
                     case 5:
-                        Player p6 = Bukkit.getPlayer(getCapitanes(7));
+                        Player p6 = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(p6);
                         break;
                     case 6:
-                        Player p7 = Bukkit.getPlayer(getCapitanes(2));
+                        Player p7 = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(p7);
                         break;
 
@@ -130,36 +130,34 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(4);
-                Objective selended = scoreboard.getObjective("selectionEnded");
-                selended.getScore("values").setScore(1);
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player p1 = Bukkit.getPlayer(getCapitanes(5));
+                        Player p1 = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(p1);
                         break;
                     case 1:
-                        Player p2 = Bukkit.getPlayer(getCapitanes(6));
+                        Player p2 = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(p2);
                         break;
                     case 2:
-                        Player p3 = Bukkit.getPlayer(getCapitanes(1));
+                        Player p3 = Bukkit.getPlayer(getCapitanes(0));
                         SelectionGUI(p3);
                         break;
                     case 3:
-                        Player p4 = Bukkit.getPlayer(getCapitanes(7));
+                        Player p4 = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(p4);
                         break;
                     case 4:
-                        Player p5 = Bukkit.getPlayer(getCapitanes(2));
+                        Player p5 = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(p5);
                         break;
                     case 5:
-                        Player p6 = Bukkit.getPlayer(getCapitanes(3));
+                        Player p6 = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(p6);
                         break;
                     case 6:
-                        Player p7 = Bukkit.getPlayer(getCapitanes(4));
+                        Player p7 = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(p7);
                         break;
 
@@ -173,34 +171,36 @@ public class Manager {
                 selectiontimes.getScore("values").setScore(0);
                 Objective selection = scoreboard.getObjective("selection");
                 selection.getScore("values").setScore(5);
+                Objective selended = scoreboard.getObjective("selectionEnded");
+                selended.getScore("values").setScore(1);
             } else {
                 switch (getSelectionTimes()) {
                     case 0:
-                        Player p1 = Bukkit.getPlayer(getCapitanes(7));
+                        Player p1 = Bukkit.getPlayer(getCapitanes(6));
                         SelectionGUI(p1);
                         break;
                     case 1:
-                        Player p2 = Bukkit.getPlayer(getCapitanes(5));
+                        Player p2 = Bukkit.getPlayer(getCapitanes(4));
                         SelectionGUI(p2);
                         break;
                     case 2:
-                        Player p3 = Bukkit.getPlayer(getCapitanes(2));
+                        Player p3 = Bukkit.getPlayer(getCapitanes(1));
                         SelectionGUI(p3);
                         break;
                     case 3:
-                        Player p4 = Bukkit.getPlayer(getCapitanes(4));
+                        Player p4 = Bukkit.getPlayer(getCapitanes(3));
                         SelectionGUI(p4);
                         break;
                     case 4:
-                        Player p5 = Bukkit.getPlayer(getCapitanes(6));
+                        Player p5 = Bukkit.getPlayer(getCapitanes(5));
                         SelectionGUI(p5);
                         break;
                     case 5:
-                        Player p6 = Bukkit.getPlayer(getCapitanes(1));
+                        Player p6 = Bukkit.getPlayer(getCapitanes(0));
                         SelectionGUI(p6);
                         break;
                     case 6:
-                        Player p7 = Bukkit.getPlayer(getCapitanes(3));
+                        Player p7 = Bukkit.getPlayer(getCapitanes(2));
                         SelectionGUI(p7);
                         break;
 
