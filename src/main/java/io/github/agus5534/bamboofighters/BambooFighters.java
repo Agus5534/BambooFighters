@@ -2,6 +2,7 @@ package io.github.agus5534.bamboofighters;
 
 import io.github.agus5534.bamboofighters.commands.Kit;
 import io.github.agus5534.bamboofighters.commands.StartSelection;
+import io.github.agus5534.bamboofighters.commands.Timer;
 import io.github.agus5534.bamboofighters.commands.tabcompleters.KitTab;
 import io.github.agus5534.bamboofighters.events.block.BlockBreak;
 import io.github.agus5534.bamboofighters.events.block.BlockPlace;
@@ -13,7 +14,9 @@ import io.github.agus5534.bamboofighters.events.inventory.InventoryClose;
 import io.github.agus5534.bamboofighters.events.player.PlayerDropItem;
 import io.github.agus5534.bamboofighters.events.player.PlayerInteract;
 import io.github.agus5534.bamboofighters.events.player.PlayerTakeLecternBook;
+import io.github.agus5534.bamboofighters.events.projectile.HitEvent;
 import io.github.agus5534.bamboofighters.utils.selections.Tier;
+import io.github.agus5534.bamboofighters.utils.timer.Start;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.plugin.PluginManager;
@@ -29,6 +32,8 @@ public final class BambooFighters extends JavaPlugin {
         this.getCommand("kit").setExecutor(new Kit());
         this.getCommand("kit").setTabCompleter(new KitTab());
         this.getCommand("startselection").setExecutor(new StartSelection());
+        this.getCommand("timer").setExecutor(new Timer());
+        this.getCommand("timer").setTabCompleter(new io.github.agus5534.bamboofighters.commands.tabcompleters.Timer());
         PluginManager pm = Bukkit.getServer().getPluginManager();
         pm.registerEvents(new BlockBreak(),this);
         pm.registerEvents(new BlockPlace(),this);
@@ -40,6 +45,7 @@ public final class BambooFighters extends JavaPlugin {
         pm.registerEvents(new PlayerTakeLecternBook(),this);
         pm.registerEvents(new InventoryClick(),this);
         pm.registerEvents(new InventoryClose(),this);
+        pm.registerEvents(new HitEvent(this),this);
         createScores();
         Bukkit.getWorlds().get(0).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
         Bukkit.getWorlds().get(1).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
@@ -62,6 +68,19 @@ public final class BambooFighters extends JavaPlugin {
         registerObjective("selectiontimes"); //Cantidad de capitanes que eligieron. Se reinicia al iniciar la siguiente etapa.
         registerObjective("selectTime"); //Si es su momento de seleccionar
         registerObjective("selectionEnded"); //Si termino la selección. 1 = terminó
+        registerObjective("tt");
+        registerObjective("ts");
+        registerObjective("tm");
+        registerObjective("timerOn");
+    }
+
+    private void timer() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, ()->{
+            Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+            if(scoreboard.getObjective("timerOn").getScore("values").getScore() == 1) {
+                new Start().startTimer();
+            }
+        },1L,20L);
     }
 
     public static Tier getTier() {

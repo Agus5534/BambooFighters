@@ -13,3 +13,6 @@ commands:
   startselection:
     description: Inicia la ronda de selección
     usage: /<command>
+  timer:
+    description: Inicia o finaliza el timer
+    usage: /<command> [Start|End]
