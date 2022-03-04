@@ -50,6 +50,7 @@ public final class BambooFighters extends JavaPlugin {
         Bukkit.getWorlds().get(0).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
         Bukkit.getWorlds().get(1).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
         Bukkit.getWorlds().get(2).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
+        timer();
     }
 
     @Override
