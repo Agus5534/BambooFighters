@@ -16,7 +16,8 @@ public class PlayerDeath implements Listener {
         double coordz = player.getLocation().getZ();
         player.setGameMode(GameMode.SPECTATOR);
         Location loc = new Location(player.getWorld(), coordx, coordy, coordz);
-        player.teleport(loc);
+        player.setBedSpawnLocation(loc);
+        //player.spigot().respawn();
 
     }
 }

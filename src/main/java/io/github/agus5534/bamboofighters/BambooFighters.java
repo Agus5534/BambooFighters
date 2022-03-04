@@ -5,14 +5,17 @@ import io.github.agus5534.bamboofighters.commands.StartSelection;
 import io.github.agus5534.bamboofighters.commands.tabcompleters.KitTab;
 import io.github.agus5534.bamboofighters.events.block.BlockBreak;
 import io.github.agus5534.bamboofighters.events.block.BlockPlace;
+import io.github.agus5534.bamboofighters.events.entity.EntityDamage;
+import io.github.agus5534.bamboofighters.events.entity.EntityDamageByEntity;
+import io.github.agus5534.bamboofighters.events.entity.EntityShootBow;
 import io.github.agus5534.bamboofighters.events.inventory.InventoryClick;
 import io.github.agus5534.bamboofighters.events.inventory.InventoryClose;
-import io.github.agus5534.bamboofighters.events.player.PlayerDeath;
 import io.github.agus5534.bamboofighters.events.player.PlayerDropItem;
 import io.github.agus5534.bamboofighters.events.player.PlayerInteract;
 import io.github.agus5534.bamboofighters.events.player.PlayerTakeLecternBook;
 import io.github.agus5534.bamboofighters.utils.selections.Tier;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Objective;
@@ -29,13 +32,18 @@ public final class BambooFighters extends JavaPlugin {
         PluginManager pm = Bukkit.getServer().getPluginManager();
         pm.registerEvents(new BlockBreak(),this);
         pm.registerEvents(new BlockPlace(),this);
-        pm.registerEvents(new PlayerDeath(),this);
+        pm.registerEvents(new EntityDamageByEntity(),this);
+        pm.registerEvents(new EntityDamage(),this);
+        pm.registerEvents(new EntityShootBow(),this);
         pm.registerEvents(new PlayerDropItem(),this);
         pm.registerEvents(new PlayerInteract(),this);
         pm.registerEvents(new PlayerTakeLecternBook(),this);
         pm.registerEvents(new InventoryClick(),this);
         pm.registerEvents(new InventoryClose(),this);
         createScores();
+        Bukkit.getWorlds().get(0).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
+        Bukkit.getWorlds().get(1).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
+        Bukkit.getWorlds().get(2).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
     }
 
     @Override

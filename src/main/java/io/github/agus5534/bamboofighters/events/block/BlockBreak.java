@@ -10,7 +10,9 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent event){
         if(event.getBlock().getType() != Material.WHITE_WOOL && event.getPlayer().getGameMode() == GameMode.SURVIVAL) {
-            event.setCancelled(true);
+            if(event.getBlock().getType() != Material.FIRE) {
+                event.setCancelled(true);
+            }
         }
     }
 }
