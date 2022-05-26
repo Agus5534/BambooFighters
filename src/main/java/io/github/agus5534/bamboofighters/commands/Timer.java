@@ -1,6 +1,8 @@
 package io.github.agus5534.bamboofighters.commands;
 
-import io.github.agus5534.bamboofighters.utils.timer.End;
+import io.github.agus5534.bamboofighters.BambooFighters;
+import io.github.agus5534.bamboofighters.GameStatus;
+import io.github.agus5534.bamboofighters.utils.timer.TimerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,9 +21,11 @@ public class Timer implements CommandExecutor {
             switch (args[0]) {
                 case "Start":
                     scoreboard.getObjective("timerOn").getScore("values").setScore(1);
+                    new BambooFighters().setGameStatus(GameStatus.PVP);
                     break;
                 case "End":
-                    new End().endTimer();
+                    new TimerManager().endTimer();
+                    new BambooFighters().setGameStatus(GameStatus.WAITING);
                     break;
                 default:
                     player.sendMessage(ChatColor.RED + "/timer [Start|End]");

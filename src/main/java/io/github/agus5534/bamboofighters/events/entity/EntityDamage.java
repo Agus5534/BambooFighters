@@ -23,6 +23,8 @@ public class EntityDamage implements Listener {
                     Bukkit.broadcastMessage(ChatColor.AQUA + "\uD83C\uDF0A " + ChatColor.RED + event.getEntity().getName());
                 } else if(event.getCause() == EntityDamageEvent.DamageCause.SUICIDE) {
                     Bukkit.broadcastMessage(ChatColor.WHITE + "\uD83D\uDC80 " + ChatColor.RED + event.getEntity().getName());
+                } else if(event.getCause() == EntityDamageEvent.DamageCause.CUSTOM) {
+                    Bukkit.broadcastMessage(ChatColor.GREEN + "\uD83D\uDD70 " + ChatColor.RED + event.getEntity().getName());
                 }
                 event.setDamage(0);
                 ((Player) event.getEntity()).setGameMode(GameMode.SPECTATOR);

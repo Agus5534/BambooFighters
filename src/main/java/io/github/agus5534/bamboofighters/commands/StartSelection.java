@@ -1,5 +1,7 @@
 package io.github.agus5534.bamboofighters.commands;
 
+import io.github.agus5534.bamboofighters.BambooFighters;
+import io.github.agus5534.bamboofighters.GameStatus;
 import io.github.agus5534.bamboofighters.utils.selections.Manager;
 import io.github.agus5534.bamboofighters.utils.selections.Tier;
 import org.bukkit.Bukkit;
@@ -18,6 +20,7 @@ public class StartSelection implements CommandExecutor {
         Objective selended = scoreboard.getObjective("selectionEnded");
         if(sender.isOp() && selended.getScore("values").getScore() == 0) {
             new Manager(getTier()).createSelection();
+            new BambooFighters().setGameStatus(GameStatus.SELECTION);
         }
 
         return true;

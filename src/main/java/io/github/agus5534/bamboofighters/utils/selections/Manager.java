@@ -1,5 +1,7 @@
 package io.github.agus5534.bamboofighters.utils.selections;
 
+import io.github.agus5534.bamboofighters.BambooFighters;
+import io.github.agus5534.bamboofighters.GameStatus;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -28,14 +30,19 @@ public class Manager {
 
     private String getCapitanes(int index) throws IndexOutOfBoundsException{
         capitanes.clear();
-        capitanes.add("Janethy");;
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            if(p.getScoreboard().getObjective("captain").getScore(p).getScore() == 1) {
+                capitanes.add(p.getName());
+            }
+        }
+        /*capitanes.add("Janethy");;
         capitanes.add("shiru_suki");
         capitanes.add("TaTuRC");
         capitanes.add("ConnG106");
         capitanes.add("AugusImperial");
         capitanes.add("Lucmus");
         capitanes.add("Ivoo_17");
-
+        */
 
         return capitanes.get(index);
     }
@@ -173,6 +180,7 @@ public class Manager {
                 selection.getScore("values").setScore(5);
                 Objective selended = scoreboard.getObjective("selectionEnded");
                 selended.getScore("values").setScore(1);
+                new BambooFighters().setGameStatus(GameStatus.WAITING);
             } else {
                 switch (getSelectionTimes()) {
                     case 0:

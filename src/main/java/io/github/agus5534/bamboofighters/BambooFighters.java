@@ -16,7 +16,7 @@ import io.github.agus5534.bamboofighters.events.player.PlayerInteract;
 import io.github.agus5534.bamboofighters.events.player.PlayerTakeLecternBook;
 import io.github.agus5534.bamboofighters.events.projectile.HitEvent;
 import io.github.agus5534.bamboofighters.utils.selections.Tier;
-import io.github.agus5534.bamboofighters.utils.timer.Start;
+import io.github.agus5534.bamboofighters.utils.timer.TimerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.plugin.PluginManager;
@@ -25,7 +25,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 public final class BambooFighters extends JavaPlugin {
-
+    private GameStatus gameStatus;
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -51,6 +51,7 @@ public final class BambooFighters extends JavaPlugin {
         Bukkit.getWorlds().get(1).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
         Bukkit.getWorlds().get(2).setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
         timer();
+        setGameStatus(GameStatus.WAITING);
     }
 
     @Override
@@ -77,10 +78,7 @@ public final class BambooFighters extends JavaPlugin {
 
     private void timer() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, ()->{
-            Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-            if(scoreboard.getObjective("timerOn").getScore("values").getScore() == 1) {
-                new Start().startTimer();
-            }
+            new TimerManager().displayTimer();
         },1L,1L);
     }
 
@@ -104,5 +102,12 @@ public final class BambooFighters extends JavaPlugin {
         if(scoreboard.getObjective(objectiveName) == null) {
             scoreboard.registerNewObjective(objectiveName,"dummy");
         }
+    }
+    public void setGameStatus(GameStatus gameStatus) {
+        this.gameStatus = gameStatus;
+    }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
     }
 }
