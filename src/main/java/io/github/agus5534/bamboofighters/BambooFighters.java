@@ -81,7 +81,7 @@ public final class BambooFighters extends JavaPlugin {
             if(scoreboard.getObjective("timerOn").getScore("values").getScore() == 1) {
                 new Start().startTimer();
             }
-        },1L,20L);
+        },1L,1L);
     }
 
     public static Tier getTier() {

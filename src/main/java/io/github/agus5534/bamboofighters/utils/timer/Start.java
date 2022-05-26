@@ -21,6 +21,7 @@ public class Start {
         Score ttScore = tt.getScore("values");
         Score tsScore = ts.getScore("values");
         Score tmScore = tm.getScore("values");
+        ttScore.setScore(ttScore.getScore() + 1);
 
         if(ttScore.getScore() >=20 && ttScore.getScore() <=20) {
             tsScore.setScore(tsScore.getScore() +1);
@@ -30,7 +31,6 @@ public class Start {
             tmScore.setScore(tmScore.getScore() + 1);
             tsScore.setScore(0);
         }
-        ttScore.setScore(ttScore.getScore() + 1);
         for(Player p : Bukkit.getOnlinePlayers()) {
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GRAY + String.format("%02d",tmScore.getScore()) + ":" + String.format("%02d", tsScore.getScore())));
 
